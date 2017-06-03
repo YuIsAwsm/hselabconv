@@ -1,5 +1,5 @@
 import sys, csv
-#from bs4 import BeautifulSoup as SUPICH
+#from bs4 import BeautifulSoup as bs
 from lxml import etree
 
 
@@ -12,7 +12,7 @@ class Converter:
         self.format = ''
         if len(arg) != 3:
             print('''
-            possal tebe na lico
+            no argument specified.
             ''')
         else:
             self.file = arg[1]
@@ -88,7 +88,7 @@ class Converter:
                         cap = ''
 
 
-                    # LEMMAS MEMMAS CHECKER SOQA
+                    # LEMMAS CHECKER
                     for ana in each_word.iter('ana'):
                         nvars += 1
                         lemma = ana.get('lex')
@@ -99,7 +99,7 @@ class Converter:
                     nlems = len(lemmas)
 
 
-                    # GRAMMA huyama
+                    # GRAMMA
                     for ana in each_word.iter('ana'):
                         nvar += 1
                         gr = ana.get('gr')
@@ -167,15 +167,13 @@ class Converter:
                 else:
                     print('prs file PLS')
             else:
-                print('''
-                zaebal sosi hui
-                ''')
+                print("none")
 
 
 
 def main(argv):
 
-    #argu = ['moshonka', './example_corpus_file.sprs', 'prs']
+    #argu = ['./example_corpus_file.sprs', 'prs']
     conv = Converter(argv)
     conv.start()
     #print(conv)
